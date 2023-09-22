@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: orange;
+}
+
+
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    background-color: beige;
+    width: 300px;
+    border: 1px solid black;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border: 2px solid black;
+}
+
+.container1>div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* button{
+       cursor: pointer;
+       background-color: black;
+        color: white;
+        padding: 5px;
+        border-radius: 0px;
+        width: auto;
+} */
+
+/* --------------------------------------------------------------------------------------- */
+
+.liftpage {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(55, 54, 52);
+}
+
+.appartment {
+    border: 2px solid whitesmoke;
+    width: 70%;
+    margin: 3% 5% 5% 5%;
+    height: 100vh;
+    /* height:90%; */
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.label {
+    position: absolute;
+    right: 30px;
+}
+
+.floor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    color: aliceblue;
+    border-top: 2px solid whitesmoke;
+    position: relative;
+    gap: 10px;
+    height: 50px;
+
+}
+
+.btn_wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    left: 20px;
+}
+
+.btn {
+    border-radius: 50%;
+    border: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    background-size: cover;
+
+}
+
+.up_btn {
+    background-image: url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_expand_less_48px-512.png");
+}
+
+.down_btn {
+    background-image: url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_expand_more_48px-512.png");
+}
+
+.hide {
+    display: none !important;
+}
