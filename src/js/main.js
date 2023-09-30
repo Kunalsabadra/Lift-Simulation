@@ -48,7 +48,7 @@ const validateInputs = () => {
     // }
 }
 
-function createBuilding(floors, lifts) {
+function createBuilding() {
 
     for (let floor = floors; floor >= 0; floor--) {
         let One_floor = document.createElement('div');
@@ -80,6 +80,10 @@ function createBuilding(floors, lifts) {
         if (floor == 0) {
             for (let lift = 1; lift <= lifts; lift++) {
                 let One_lift = document.createElement('div');
+                One_lift.innerHTML = `
+                    <div class="door left open"></div>
+                    <div class="door right open"></div>
+                `;
                 One_lift.classList.add('lift');
                 One_floor.appendChild(One_lift);
             }
@@ -138,14 +142,18 @@ function fulfillRequest() {
         }, 5000);
     }
 
-    let { One_lift, floor: currFloor, isMoving } = (lift_requests[0].getAttribute('floor'));
+    let { One_lift, floor: currFloor, isMoving } = get_lift(lift_requests[0].getAttribute('floor'));
 
     let nextFloorElement = lift_requests.shift();
     const next_floor = Number(nextFloorElement.getAttribute('floor'));
 
+    console.log("Present Floor: ", currFloor);
+    // console.log("nextFloor: ", next_floor);
+
+
     updateLiftData(One_lift, true, next_floor);
 
-    const distbtnFloor = Math.abs(next_floor, currFloor);
+    const distbtnFloor = Math.abs(next_floor - currFloor);
     moveLift(distbtnFloor, next_floor, One_lift);
 
     setTimeout(() => {
@@ -161,14 +169,15 @@ function fulfillRequest() {
 
 function moveLift(distbtnFloor, next_floor, One_lift) {
     if (next_floor > floors || next_floor < 0) return;
-    let child = One_lift.firstElementChild;
-    if (child === null) {
-        console.log('Hello');
-    }
+    // console.log(distbtnFloor);
+    // console.log(next_floor);
+    // console.log(One_lift);
 
-    else console.log('Ok');
+    let child = One_lift.firstElementChild;
+    // console.log(child);
+    // else console.log('Ok');
     const liftHeight = One_lift.firstElementChild.offsetHeight;
-    One_lift.style.transform = `translateY(-${next_Floor * (liftHeight + 2)}px)`
+    One_lift.style.transform = `translateY(-${next_floor * (liftHeight + 2)}px)`
     One_lift.style.transition = `transform ${2 * distbtnFloor}s ease`;
 }
 

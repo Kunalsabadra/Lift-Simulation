@@ -110,6 +110,21 @@ body {
     align-items: center;
 }
 
+ .door {
+     width: 50%;
+     height: 100%;
+     background-color: whitesmoke;
+     position: absolute;
+     transition: transform 2.5s ease-in-out;
+     border: 0;
+ }
+
+ .left {
+     transform-origin: right;
+ }
+
+ 
+
 .up_btn {
     background-image: url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_expand_less_48px-512.png");
 }
