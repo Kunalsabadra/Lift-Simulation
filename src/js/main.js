@@ -167,15 +167,9 @@ function fulfillRequest() {
 
 }
 
+//Throwing error : Uncaught TypeError: Cannot read property 'firstElementChild' of undefined when expanding posts in a certain order
 function moveLift(distbtnFloor, next_floor, One_lift) {
     if (next_floor > floors || next_floor < 0) return;
-    // console.log(distbtnFloor);
-    // console.log(next_floor);
-    // console.log(One_lift);
-
-    let child = One_lift.firstElementChild;
-    // console.log(child);
-    // else console.log('Ok');
     const liftHeight = One_lift.firstElementChild.offsetHeight;
     One_lift.style.transform = `translateY(-${next_floor * (liftHeight + 2)}px)`
     One_lift.style.transition = `transform ${2 * distbtnFloor}s ease`;
