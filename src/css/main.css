@@ -3,6 +3,8 @@
     padding: 0;
     box-sizing: border-box;
 }
+ 
+
 
 body {
     height: 100vh;
@@ -37,14 +39,7 @@ body {
     gap: 5px;
 }
 
-/* button{
-       cursor: pointer;
-       background-color: black;
-        color: white;
-        padding: 5px;
-        border-radius: 0px;
-        width: auto;
-} */
+
 
 /* --------------------------------------------------------------------------------------- */
 
@@ -61,8 +56,8 @@ body {
     border: 2px solid whitesmoke;
     width: 70%;
     margin: 3% 5% 5% 5%;
-    height: 100vh;
-    /* height:90%; */
+    /* height: 200vh; */
+    height:90%;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -76,16 +71,15 @@ body {
 .floor {
     flex: 1;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
-    justify-content: center;
-    padding: 0 20px;
+    justify-content: space-around;
+    padding: 0 80px;
     color: aliceblue;
     border-top: 2px solid whitesmoke;
     position: relative;
     gap: 10px;
     height: 50px;
-
 }
 
 .btn_wrap {
@@ -106,6 +100,16 @@ body {
 
 }
 
+.lift{
+    height: 100%;
+    position: relative;
+    background-color: #e7a7a7;
+    width: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .up_btn {
     background-image: url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_expand_less_48px-512.png");
 }
@@ -116,4 +120,8 @@ body {
 
 .hide {
     display: none !important;
+}
+
+.btn_toggle {
+    background-color: cyan;
 }

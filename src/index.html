@@ -12,12 +12,26 @@
       <p class="label1">Welcome to Lift Simulation Project</p>
       <div>
         <label for="noOf_floor"> Enter number of floors</label>
-        <input id="floors" type="number" placeholder="Enter floors" />
+        <input
+          id="floors"
+          type="number"
+          placeholder="Enter floors"
+          min="2"
+          max="10"
+          required
+        />
       </div>
 
       <div>
         <label for="noOf_lifts">Enter number of lifts</label>
-        <input id="lifts" type="number" placeholder="Enter lifts" />
+        <input
+          id="lifts"
+          type="number"
+          placeholder="Enter lifts"
+          min="1"
+          max="5"
+          required
+        />
       </div>
       <button type="submit">Submit</button>
     </form>
