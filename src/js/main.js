@@ -127,7 +127,7 @@ function updateLiftData(One_lift, isMoving, floor) {
     for (let i = 0; i < lifts_info.length; i++) {
         if (lifts_info[i].One_lift === One_lift) {
             lifts_info[i].isMoving = isMoving;
-            lifts_info.floor = floor;
+            lifts_info[i].floor = floor;
         }
     }
 }
@@ -159,13 +159,26 @@ function fulfillRequest() {
     setTimeout(() => {
         nextFloorElement.classList.toggle('btn_toggle');
 
+        toggleLiftDoor(One_lift);
         setTimeout(() => {
-            updateLiftData(One_lift, false, next_floor);
-            fulfillRequest();
-        }, 2500)
-    }, 200 * distbtnFloor)
+            toggleLiftDoor(One_lift);
+            setTimeout(() => {
+                updateLiftData(One_lift, false, next_floor);
+                processQueueRequest();
+            }, 2500);
+        }, 2500);
+    }, 2000 * distbtnFloor)
 
 }
+
+function toggleLiftDoor(One_lift) {
+    let doors = One_lift.children;
+    for (let i = 0; i < doors.length; i++) {
+        doors[i].classList.toggle("open");
+    }
+}
+
+
 
 //Throwing error : Uncaught TypeError: Cannot read property 'firstElementChild' of undefined when expanding posts in a certain order
 function moveLift(distbtnFloor, next_floor, One_lift) {

@@ -63,6 +63,10 @@ body {
     flex-direction: column;
 }
 
+.appartment > :first-child {
+    border: none !important;
+}
+
 .label {
     position: absolute;
     right: 30px;
@@ -79,7 +83,7 @@ body {
     border-top: 2px solid whitesmoke;
     position: relative;
     gap: 10px;
-    height: 50px;
+    /* height: 50px; */
 }
 
 .btn_wrap {
@@ -123,7 +127,10 @@ body {
      transform-origin: right;
  }
 
- 
+  .right {
+      right: 0;
+      transform-origin: left;
+  }
 
 .up_btn {
     background-image: url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_expand_less_48px-512.png");
@@ -137,6 +144,23 @@ body {
     display: none !important;
 }
 
+.door.open {
+    transform: scaleX(0);
+}
+
 .btn_toggle {
     background-color: cyan;
+}
+
+.floor_btn:hover {
+    opacity: 0.9;
+}
+
+.door {
+    width: 50%;
+    height: 100%;
+    background-color: whitesmoke;
+    position: absolute;
+    transition: transform 2.5s ease-in-out;
+    border: 0;
 }
