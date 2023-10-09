@@ -18,6 +18,15 @@ form.addEventListener('submit', e => {
     initially();
 });
 
+function goBack() {
+    form.classList.remove('hide');
+    liftpage.classList.add('hide');
+    appartment.innerHTML = '';
+    lifts_info = [];
+    lift_requests = [];
+}
+
+
 const validateInputs = () => {
     floors = parseInt(no_of_floors.value);
     lifts = parseInt(no_of_lifts.value);
@@ -100,20 +109,39 @@ function initially() {
         lifts_info.push({
             One_lift: all_lifts[i],
             floor: 0,
-            isMoving: false
+            isMoving: false,
+            Destination: null
         })
     }
 }
 
+function lift_moving(new_floor) {
+
+    let flag = false;
+
+    for (let lifts = 0; lifts < lifts_info.length; lifts++) {
+        const lift = lifts_info[lifts];
+        if (Number(lift.floor == new_floor)) {
+            flag = true;
+        }
+    }
+    return flag;
+}
+
 function addRequest(e) {
     const new_floor = e.target.getAttribute('floor');
-
     e.target.classList.toggle('btn_toggle');
-    lift_requests.push(e.target);
-    fulfillRequest();
+    if (lift_moving(new_floor)) {
+        console.log("already moving lift")
+    }
+    else {
+        lift_requests.push(e.target);
+        fulfillRequest();
+    }
 }
 
 function get_lift(nextFloor) {
+    if (lift_moving(nextFloor)) return null;
     let free_lift = lifts_info.filter((lift) => lift.isMoving === false);
     if (free_lift.length === 0) return null;
 
@@ -128,6 +156,7 @@ function updateLiftData(One_lift, isMoving, floor) {
         if (lifts_info[i].One_lift === One_lift) {
             lifts_info[i].isMoving = isMoving;
             lifts_info[i].floor = floor;
+
         }
     }
 }
