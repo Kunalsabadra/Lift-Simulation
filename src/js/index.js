@@ -36,18 +36,22 @@ const validateInputs = () => {
 
     if ((lifts === "" || lifts < 1 || lifts > 10) && (floors > 20 || floors < 2 || floors === "")) {
         alert("Please Enter Valid No Of Lifts and Floors")
+        return;
     }
 
     else if (lifts > floors) {
         alert("Lifts Cant be more than Floors")
+        return;
     }
 
     else if (lifts === "" || lifts < 1 || lifts > 10) {
         alert("Please Enter Valid No Of Lifts");
+        return;
     }
 
     else if (floors > 20 || floors < 2 || floors === "") {
         alert("Please Enter Valid No Of Floors")
+        return;
     }
 
     // else {
@@ -90,9 +94,9 @@ function createBuilding() {
             for (let lift = 1; lift <= lifts; lift++) {
                 let One_lift = document.createElement('div');
                 One_lift.innerHTML = `
-                    <div class="door left open"></div>
-                    <div class="door right open"></div>
-                `;
+                        <div class="door left open"></div>
+                        <div class="door right open"></div>
+                    `;
                 One_lift.classList.add('lift');
                 One_floor.appendChild(One_lift);
             }
@@ -100,7 +104,13 @@ function createBuilding() {
 
         One_floor.appendChild(floor_name);
         appartment.appendChild(One_floor);
+
+
+
+
     }
+
+
 }
 
 function initially() {
@@ -130,8 +140,10 @@ function lift_moving(new_floor) {
 
 function addRequest(e) {
     const new_floor = e.target.getAttribute('floor');
+    const new_lift = lift_requests[0].getAttribute('floor');
     e.target.classList.toggle('btn_toggle');
     if (lift_moving(new_floor)) {
+        toggleLiftDoor(new_lift);
         console.log("already moving lift")
     }
     else {
@@ -141,7 +153,10 @@ function addRequest(e) {
 }
 
 function get_lift(nextFloor) {
-    if (lift_moving(nextFloor)) return null;
+    if (lift_moving(nextFloor)) {
+        // toggleLiftDoor(One_lift);
+        return null;
+    }
     let free_lift = lifts_info.filter((lift) => lift.isMoving === false);
     if (free_lift.length === 0) return null;
 
@@ -211,6 +226,7 @@ function toggleLiftDoor(One_lift) {
 
 //Throwing error : Uncaught TypeError: Cannot read property 'firstElementChild' of undefined when expanding posts in a certain order
 function moveLift(distbtnFloor, next_floor, One_lift) {
+    console.log(One_lift);
     if (next_floor > floors || next_floor < 0) return;
     const liftHeight = One_lift.firstElementChild.offsetHeight;
     One_lift.style.transform = `translateY(-${next_floor * (liftHeight + 2)}px)`

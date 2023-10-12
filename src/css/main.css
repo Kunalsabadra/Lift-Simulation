@@ -139,6 +139,83 @@ body {
       transform-origin: left;
   }
 
+
+  .rightlift {
+      height: 100%;
+      width: 50%;
+      /* position: absolute; */
+      /* background-color: white; */
+      /* background: rgb(63,94,251);
+background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
+      background: rgb(238, 174, 202);
+      background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+      border: 2px solid grey;
+  }
+
+  .leftLift {
+      height: 100%;
+      width: 50%;
+      /* position: absolute; */
+      /* background-color: white; */
+      background: rgb(238, 174, 202);
+      background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+      border: 2px solid grey;
+      /* Any other existing styles */
+  }
+  
+
+.openLeftDoor {
+
+    animation: leftDoor 5s linear alternate;
+}
+
+@keyframes leftDoor {
+    0% {
+        transform: translateX(0%);
+    }
+
+    50% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.openrightDoor {
+    /* openrightDoor */
+    /* transform:translateX(100%);
+    transition:transform 2.5s ease-in-out; */
+    animation: rightDoor 5s linear alternate;
+}
+
+@keyframes rightDoor {
+    0% {
+        transform: translateX(0%);
+    }
+
+    50% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.closeLeftDoor {
+    transform: translateX(100%);
+    transition: transform 2.5s ease-in-out;
+}
+
+.closerightDoor {
+    /* openrightDoor */
+    transform: translateX(-100%);
+    transition: transform 2.5s ease-in-out;
+}
+
+
 .up_btn {
     background-image: url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_expand_less_48px-512.png");
 }
