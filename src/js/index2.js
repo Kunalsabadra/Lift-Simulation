@@ -272,9 +272,10 @@ async function handleLift(door, next_floor) {
 
 
     Currentlift.isMoving = true;
+    console.log(Currentlift);
     let lift = document.querySelector(`#floorid-${door}`)
     // console.log({ lift })
-    lift.style.transform = `translateY(${temp}%)`;
+    lift.style.transform = `translateY(-${next_floor * 100}%)`;
     // lift.style.bottom = `${temp}%`
     lift.style.transition = `transform ${time}s`
 
