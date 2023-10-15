@@ -137,12 +137,14 @@ body {
   .right {
       right: 0;
       transform-origin: left;
+      
   }
 
 
   .rightlift {
       height: 100%;
       width: 50%;
+   
       /* position: absolute; */
       /* background-color: white; */
       /* background: rgb(63,94,251);

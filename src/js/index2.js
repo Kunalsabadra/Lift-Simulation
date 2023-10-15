@@ -57,7 +57,7 @@ const validateInputs = () => {
 
 function createBuilding() {
 
-    for (let floor = floors; floor >= 0; floor--) {
+    for (let floor = floors; floor > 0; floor--) {
         let One_floor = document.createElement('div');
         One_floor.classList.add('floor');
         One_floor.classList.add(`floor-${floor}`)
@@ -80,13 +80,18 @@ function createBuilding() {
         down_btn.id = `Down-${floor}`;
 
 
-        up_btn.addEventListener('click', this.callingLift);
-        down_btn.addEventListener('click', this.callingLift)
+        // up_btn.addEventListener('click', this.callingLift);
+        // down_btn.addEventListener('click', this.callingLift)
 
+        if (floor !== floors) {
+            up_btn.addEventListener('click', this.callingLift);
+            btn_wrap.appendChild(up_btn);
 
-        if (floor !== floors) btn_wrap.appendChild(up_btn);
-        if (floor !== 0) btn_wrap.appendChild(down_btn);
-
+        }
+        if (floor !== 1) {
+            down_btn.addEventListener('click', this.callingLift)
+            btn_wrap.appendChild(down_btn);
+        }
         let floor_name = document.createElement('h5');
         floor_name.classList.add('label');
         floor_name.textContent = `Floor ${floor}`;
@@ -99,7 +104,7 @@ function createBuilding() {
 
     let One_lift;
 
-    let targetFloorNo = document.querySelector(".floor-0");
+    let targetFloorNo = document.querySelector(".floor-1");
     // console.log(targetFloorNo);
     for (let lift = lifts; lift > 0; lift--) {
 
@@ -275,7 +280,7 @@ async function handleLift(door, next_floor) {
     console.log(Currentlift);
     let lift = document.querySelector(`#floorid-${door}`)
     // console.log({ lift })
-    lift.style.transform = `translateY(-${next_floor * 100}%)`;
+    lift.style.transform = `translateY(-${(next_floor - 1) * 102}%)`;
     // lift.style.bottom = `${temp}%`
     lift.style.transition = `transform ${time}s`
 
