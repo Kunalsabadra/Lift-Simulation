@@ -12,10 +12,6 @@ form.addEventListener('submit', e => {
     e.preventDefault();
     // console.log("Hello")
     validateInputs();
-    form.classList.add('hide');
-    liftpage.classList.remove('hide');
-    createBuilding(floors, lifts);
-    // initially();
 });
 
 function goBack() {
@@ -52,6 +48,11 @@ const validateInputs = () => {
     else if (floors > 20 || floors < 2 || floors === "") {
         alert("Please Enter Valid No Of Floors")
         return;
+    }
+    else {
+        form.classList.add('hide');
+        liftpage.classList.remove('hide');
+        createBuilding(floors, lifts);
     }
 }
 
@@ -280,7 +281,11 @@ async function handleLift(door, next_floor) {
     console.log(Currentlift);
     let lift = document.querySelector(`#floorid-${door}`)
     // console.log({ lift })
-    lift.style.transform = `translateY(-${(next_floor - 1) * 102}%)`;
+    // lift.style.transform = `translateY(-${(next_floor - 1) * 102}%)`;
+
+    lift.style.transform = `translateY( calc(${-(next_floor - 1) * 100}% + ${-(next_floor - 1) * 2}px))`;
+
+
     // lift.style.bottom = `${temp}%`
     lift.style.transition = `transform ${time}s`
 

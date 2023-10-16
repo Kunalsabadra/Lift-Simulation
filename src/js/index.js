@@ -11,11 +11,13 @@ let lift_requests = [];
 form.addEventListener('submit', e => {
     e.preventDefault();
     // console.log("Hello")
-    validateInputs();
-    form.classList.add('hide');
-    liftpage.classList.remove('hide');
-    createBuilding(floors, lifts);
-    initially();
+    if (!validateInputs()) return;
+    else {
+        form.classList.add('hide');
+        liftpage.classList.remove('hide');
+        createBuilding(floors, lifts);
+        initially();
+    }
 });
 
 function goBack() {
@@ -36,22 +38,22 @@ const validateInputs = () => {
 
     if ((lifts === "" || lifts < 1 || lifts > 10) && (floors > 20 || floors < 2 || floors === "")) {
         alert("Please Enter Valid No Of Lifts and Floors")
-        return;
+        return false;
     }
 
     else if (lifts > floors) {
         alert("Lifts Cant be more than Floors")
-        return;
+        return false;
     }
 
     else if (lifts === "" || lifts < 1 || lifts > 10) {
         alert("Please Enter Valid No Of Lifts");
-        return;
+        return false;
     }
 
     else if (floors > 20 || floors < 2 || floors === "") {
         alert("Please Enter Valid No Of Floors")
-        return;
+        return false;
     }
 
     // else {
@@ -59,6 +61,7 @@ const validateInputs = () => {
     //     appartment.classList.remove('hide');
     //     createBuilding(floors, lifts);
     // }
+    else return true;
 }
 
 function createBuilding() {
